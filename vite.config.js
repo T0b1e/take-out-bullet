@@ -1,9 +1,20 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vitest/config';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-	plugins: [sveltekit()],
+	base: '/take-out-bullet/',
+	plugins: [sveltekit({
+		adapter: {
+			name: 'static',
+			options: {
+				pages: 'dist',
+				assets: 'dist',
+				fallback: null
+			}
+		}
+	})],
 	test: {
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	}
 });
+	
